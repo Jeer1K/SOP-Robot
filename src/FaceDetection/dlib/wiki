@@ -1,0 +1,9 @@
+In this case we just need the image_raw topics and it contains the RGB image frames. Then in the next step we defined a ROS package based on python with dlib name as blow.
+$ cd ~/catkin_ws/src
+$ catkin_create_pkg dlib rospy
+In this package in the src directory we implemented 3 python classes as known as sub_class.py, dlib_grey.py and opencv_class.py which used dlib and OpenCV libraries in order. In these classes they read topic of /usb_cam/image_raw and decode it as messages which are RGB frames. The OpenCV libraries has variety types of detection such as Boosting, MIL, KCF, TLD, etc. In this class we used Boosting type because of the best performance in comparison with the rest. After finding the face, in these codes we draw a rectangle surround the face and now publish each new frame with the rectangle as a message in the topics which are called 
+•	/dlib/image_raw
+•	/dlib/image_raw_grey
+•	/opencv/image_raw
+ 
+In this project the RGB images have 3 channels red, green and blue which need process, but in the dlib_grey.py we changed to grey scale images to just use one channel and reduced the process but as we can see it did not make a big difference change in the speed of dlib. For using this first of all create a ROS package and name it as dlib, and in the src directory copy the python files, in this package create a launch directory and copy the launch file. After that, with thid command $chmod +x python.py create the executable file. Now, in the main directory implement the catkin_make and after that set the ROS environment. Finally you should run the $roslaunch dlib face_detector.launch. Now, it publishes 3 ROS topic as above which can be shown in rqt figure.
