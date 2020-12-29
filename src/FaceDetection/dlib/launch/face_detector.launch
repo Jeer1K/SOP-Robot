@@ -1,0 +1,11 @@
+<launch>
+  <node name="image_listener" pkg="dlib" type="sub_class.py">
+    
+  </node>
+  <node name="image_listener_opencv" pkg="dlib" type="opencv_class.py">
+    
+  </node>
+  <node name="image_listener_grey" pkg="dlib" type="dlib_grey.py">
+    
+  </node>
+</launch>
